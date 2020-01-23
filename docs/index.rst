@@ -54,7 +54,6 @@ Here is the view of a '.wrl' file in Paraview:
 Indices and tables
 ==================
 
-
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
