@@ -1,2 +1,6 @@
+# General
 .DS_Store
 .vscode
+
+# Simulations and results for JMiske thesis
+exec/miskethesis/
