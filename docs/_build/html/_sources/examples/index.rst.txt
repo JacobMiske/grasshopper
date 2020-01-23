@@ -12,3 +12,10 @@ This page shows some examples of a Grasshopper GDML input file.
 
 Example Alpha Particle Energy Loss
 ----------------------------------
+
+
+Example Beta Particles in Water Transmission
+--------------------------------------------
+
+.. image:: ../_images/GRSHPRbeta_water.png
+    :width: 600

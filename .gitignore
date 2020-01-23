@@ -2,5 +2,11 @@
 .DS_Store
 .vscode
 
+# Docs build
+docs/_build/
+
 # Simulations and results for JMiske thesis
 exec/miskethesis/
+
+# Python virtual environment
+venv/
