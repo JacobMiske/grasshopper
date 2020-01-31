@@ -11,10 +11,11 @@ Dev Guide
 
 This Dev Guide serves to brief Grasshopper users on the functionality of each file
 in the codebase of the Grasshopper program. For devs, the shorthand for Grasshopper
-will be GRSHPR, a recursive acronym for "Grasshopper Realistically Simulates High-Energy
+can be GRSHPR, a recursive acronym for "Grasshopper Realistically Simulates High-Energy
 Particles & Radiation".
 
-# Bugs
+Bugs
+----
 Grasshoppers hate bugs. The code has been tested fairly well, however there are probably still some bugs in it.
 If you run against a strange behavior, please prepare a brief report with the following information
 
@@ -26,6 +27,12 @@ Email the bug report to mailto:aregjan@mit.edu.
 
 Please generate a GitHub pull request if you believe that you have source code changes
 to make in order to avoid the bug.
+
+Code Standards
+--------------
+In developing C++ code, please follow the standards of the C++ linter.
+
+In developing Python code, please follow the standards of the PyLint linter.
 
 Grasshopper Specific Files
 --------------------------
