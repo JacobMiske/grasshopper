@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-
+import time
 from builtins import str
 from selenium import webdriver
-import time
+from api_visualize.api_visualize import api_visualize
 
 ATOMIC_NUMBER = 2
 
-class XCOM_API():
+
+class xcom_api():
     """
     Controls the NIST XCOM database website.
 
@@ -39,10 +40,19 @@ class XCOM_API():
         self.chrome_options = chrome_options
         self.keep_alive = keep_alive
 
-
-    def get_XCOM_results(self, print_out=False):
+    def get_user_options(self):
         """
-        Use selenium's webdriver to search the xcom website and query the database.
+        A list of boolean values related to
+        user options in data scraping
+        :return:
+        """
+        options = [1,0,0]
+        return options
+
+    def get_xcom_results(self, options, options_bool=False, print_out=False):
+        """
+        Use selenium's webdriver to search the xcom website
+        and query the database.
         :return:
         """
         # Open Chrome window
@@ -60,14 +70,11 @@ class XCOM_API():
         # Remove graph
         # submit_button = driver.find_elements_by_xpath("/html/body/form/p[2]/table/tbody/tr[2]/td[1]/p[1]/input")[0]
         # submit_button.click()
-        # Choose None
-        submit_button = driver.find_elements_by_xpath("/html/body/form/p[2]/table/tbody/tr[2]/td[1]/p[2]/input")[0]
-        submit_button.click()
         # Click tab deliminator submit button
         submit_button = driver.find_elements_by_xpath("//input[@value='tab']")[0]
         submit_button.click()
         # Click download submit button
-        submit_button = driver.find_elements_by_xpath("//input[@type='submit', @value='Download data']")[0]
+        submit_button = driver.find_elements_by_xpath("/html/body/form[2]/p/input[5]")[0]
         submit_button.click()
         # Print out html
         if print_out:
@@ -76,7 +83,19 @@ class XCOM_API():
         # Wait then close
         time.sleep(3)
         driver.quit()
+        return html if print_out else 0
+
 
 if __name__ == '__main__':
-    xcom_operator = XCOM_API()
-    xcom_operator.get_XCOM_results()
+    xcom_operator = xcom_api()
+    # Get options on request
+    options_user = xcom_operator.get_user_options()
+    # Run the data scraper
+    html = xcom_operator.get_xcom_results(options=options_user, print_out=True)
+    data_fog = html[107:-21]
+    res = data_fog.split('\n')
+    print(res)
+    xcom_api_visualizer = api_visualize()
+    gen_figures = xcom_api_visualizer.plot_list(list_v=res)
+    get_metrics = xcom_api_visualizer.get_metrics_on_list(list_v=res)
+
