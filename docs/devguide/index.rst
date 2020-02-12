@@ -11,9 +11,7 @@ Developer's Guide
     bugs
     file-structure
     contributing
-    workflow
     styleguide
-    user-input
 
 Welcome to the Grasshopper Developer’s Guide!
 
