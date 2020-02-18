@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import time
+from itertools import repeat
+import csv
 from builtins import str
 from selenium import webdriver
 from api_visualize.api_visualize import api_visualize
@@ -39,6 +41,8 @@ class xcom_api():
         self.service_log_path = service_log_path
         self.chrome_options = chrome_options
         self.keep_alive = keep_alive
+        self.driver = webdriver.Chrome()
+        self.driver.get('https://physics.nist.gov/PhysRefData/Xcom/html/xcom1.html')
 
     def get_user_options(self):
         """
@@ -46,44 +50,112 @@ class xcom_api():
         user options in data scraping
         :return:
         """
-        options = [1,0,0]
+        # TODO: Input results of user readable questions
+
+        options = [0,0,0]
         return options
 
-    def get_xcom_results(self, options, options_bool=False, print_out=False):
+    def set_data_options(self):
         """
-        Use selenium's webdriver to search the xcom website
+        Clicks on different return values before data downloaded
+        :return: 0
+        """
+        click_coherent_scattering = self.driver.find_element_by_xpath(
+            "/html/body/form[2]/p/table/tbody/tr[2]/td[1]/input")
+        click_coherent_scattering.click()
+        click_incoherent_scattering = self.driver.find_element_by_xpath(
+            "/html/body/form[2]/p/table/tbody/tr[2]/td[2]/input")
+        click_incoherent_scattering.click()
+        click_photo_absorp = self.driver.find_element_by_xpath(
+            "/html/body/form[2]/p/table/tbody/tr[1]/td[4]/input")
+        click_photo_absorp.click()
+        click_pp_in_nuclear = self.driver.find_element_by_xpath(
+            "/html/body/form[2]/p/table/tbody/tr[2]/td[3]/input")
+        click_pp_in_nuclear.click()
+        click_pp_in_elect = self.driver.find_element_by_xpath(
+            "/html/body/form[2]/p/table/tbody/tr[2]/td[4]/input")
+        click_pp_in_elect.click()
+        click_ta_with_cs = self.driver.find_element_by_xpath(
+            "/html/body/form[2]/p/table/tbody/tr[2]/td[5]/input")
+        click_ta_with_cs.click()
+        click_ta_wo_cs = self.driver.find_element_by_xpath(
+            "/html/body/form[2]/p/table/tbody/tr[2]/td[6]/input")
+        click_ta_wo_cs.click()
+        return 0
+
+    def save_data_to_csv(self, web_tsv_scrape):
+        """
+        Takes XCOM data and saves as a .csv file
+        :return:
+        """
+        with web_tsv_scrape as tsvin, open('data.csv', 'w', newline='') as csvout:
+            tsvin = csv.reader(tsvin, delimiter='\t')
+            csvout = csv.writer(csvout)
+
+            for row in tsvin:
+                count = int(row[4])
+                if count > 0:
+                    csvout.writerows(repeat(row[2:4], count))
+        return 0
+
+    def get_xcom_html(self, options, options_bool=False, print_out=True):
+        """
+        Use selenium's webdriver to search the XCOM website
         and query the database.
         :return:
         """
-        # Open Chrome window
-        driver = webdriver.Chrome()
-        driver.get('https://physics.nist.gov/PhysRefData/Xcom/html/xcom1.html')
+
+        # If element chosen, click element
+        if options[0] == True:
+            element_button = self.driver.find_element_by_xpath('/html/body/div[2]/form/table/tbody/tr[1]/td/blockquote/input[1]')[0]
+            element_button.click()
+        # If compound chosen, click compound
+        if options[1] == True:
+            compound_button = self.driver.find_element_by_xpath('/html/body/div[2]/form/table/tbody/tr[1]/td/blockquote/input[2]')[0]
+            compound_button.click()
+        if options[2] == True:
+            mixture_button = self.driver.find_element_by_xpath('/html/body/div[2]/form/table/tbody/tr[1]/td/blockquote/input[3]')[0]
+            mixture_button.click()
         # Click submit button
-        submit_button = driver.find_elements_by_xpath("//input[@value='Submit Information']")[0]
+        submit_button = self.driver.find_elements_by_xpath("//input[@value='Submit Information']")[0]
         submit_button.click()
         # Type atomic number
-        text_area = driver.find_elements_by_xpath("/html/body/form/p[2]/table/tbody/tr[1]/td[1]/p/input[1]")[0]
+        text_area = self.driver.find_elements_by_xpath("/html/body/form/p[2]/table/tbody/tr[1]/td[1]/p/input[1]")[0]
         text_area.send_keys(str(ATOMIC_NUMBER))
         # Click submit button
-        submit_button = driver.find_elements_by_xpath("//input[@value='Submit Information']")[0]
+        submit_button = self.driver.find_elements_by_xpath("//input[@value='Submit Information']")[0]
         submit_button.click()
         # Remove graph
         # submit_button = driver.find_elements_by_xpath("/html/body/form/p[2]/table/tbody/tr[2]/td[1]/p[1]/input")[0]
         # submit_button.click()
+        self.set_data_options()
+
         # Click tab deliminator submit button
-        submit_button = driver.find_elements_by_xpath("//input[@value='tab']")[0]
+        submit_button = self.driver.find_elements_by_xpath("//input[@value='tab']")[0]
         submit_button.click()
-        # Click download submit button
-        submit_button = driver.find_elements_by_xpath("/html/body/form[2]/p/input[5]")[0]
+        # Click download data submit button
+        submit_button = self.driver.find_elements_by_xpath("/html/body/form[2]/p/input[5]")[0]
         submit_button.click()
         # Print out html
         if print_out:
-            html = driver.page_source
+            html = self.driver.page_source
             print(html)
         # Wait then close
         time.sleep(3)
-        driver.quit()
+        self.driver.quit()
         return html if print_out else 0
+
+    def get_xcom_data(self, xcom_html_data, save_file=True):
+        """
+        Takes HTML with data, convert to readable python object.
+        Can pass to save_data_to_csv() method for save file.
+        :return:
+        """
+        data_fog = xcom_html_data[107:-21]
+        res = data_fog.split('\n')
+        print(res)
+        return xcom_data
+
 
 
 if __name__ == '__main__':
@@ -91,11 +163,9 @@ if __name__ == '__main__':
     # Get options on request
     options_user = xcom_operator.get_user_options()
     # Run the data scraper
-    html = xcom_operator.get_xcom_results(options=options_user, print_out=True)
-    data_fog = html[107:-21]
-    res = data_fog.split('\n')
-    print(res)
-    xcom_api_visualizer = api_visualize()
-    gen_figures = xcom_api_visualizer.plot_list(list_v=res)
-    get_metrics = xcom_api_visualizer.get_metrics_on_list(list_v=res)
-
+    html = xcom_operator.get_xcom_html(options=options_user, print_out=True)
+    data = xcom_operator.get_xcom_data(save_file=True)
+    # Trying out visualizations
+    # xcom_api_visualizer = api_visualize()
+    # gen_figures = xcom_api_visualizer.plot_list(list_v=res)
+    # get_metrics = xcom_api_visualizer.get_metrics_on_list(list_v=res)
