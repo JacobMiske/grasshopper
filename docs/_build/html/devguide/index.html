@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Dev Guide &mdash; Grasshopper Docs</title>
+  <title>Developer’s Guide &mdash; Grasshopper Docs</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python API" href="../pythonapi/index.html" />
-    <link rel="prev" title="Users Guide" href="../usersguide/index.html" /> 
+    <link rel="next" title="1. Bugs" href="bugs.html" />
+    <link rel="prev" title="User’s Guide" href="../usersguide/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,9 +88,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releasenotes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/index.html">Theory and Methodology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usersguide/index.html">Users Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Dev Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#grasshopper-specific-files">Grasshopper Specific Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usersguide/index.html">User’s Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer’s Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bugs.html">1. Bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-structure.html">2. Grasshopper Specific Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">3. Contributing to Grasshopper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styleguide.html">4. Style Guide</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pythonapi/index.html">Python API</a></li>
@@ -142,7 +145,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Dev Guide</li>
+      <li>Developer’s Guide</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -161,65 +164,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dev-guide">
-<span id="devguide"></span><h1>Dev Guide<a class="headerlink" href="#dev-guide" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="developer-s-guide">
+<span id="devguide"></span><h1>Developer’s Guide<a class="headerlink" href="#developer-s-guide" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-</div>
-<p>This Dev Guide serves to brief Grasshopper users on the functionality of each file
-in the codebase of the Grasshopper program. For devs, the shorthand for Grasshopper
-will be GRSHPR, a recursive acronym for “Grasshopper Realistically Simulates High-Energy
-Particles &amp; Radiation”.</p>
-<p># Bugs
-Grasshoppers hate bugs. The code has been tested fairly well, however there are probably still some bugs in it.
-If you run against a strange behavior, please prepare a brief report with the following information</p>
-<ul class="simple">
-<li><p>the platform you are running it on</p></li>
-<li><p>the gdml file (attach it)</p></li>
-<li><p>a description of the symptoms, along with the relevant part of the screen output</p></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bugs.html">1. Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-structure.html">2. Grasshopper Specific Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">3. Contributing to Grasshopper</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#overview">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#terminology">3.2. Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#contribution-process">3.3. Contribution Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#becoming-a-committer">3.4. Becoming a Committer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#tc-process">3.5. TC Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#team">3.6. Team</a></li>
 </ul>
-<p>Email the bug report to <a class="reference external" href="mailto:aregjan&#37;&#52;&#48;mit&#46;edu">mailto:aregjan<span>&#64;</span>mit<span>&#46;</span>edu</a>.</p>
-<p>Please generate a GitHub pull request if you believe that you have source code changes
-to make in order to avoid the bug.</p>
-<div class="section" id="grasshopper-specific-files">
-<h2>Grasshopper Specific Files<a class="headerlink" href="#grasshopper-specific-files" title="Permalink to this headline">¶</a></h2>
-<p>The base of Grasshopper which interacts with G4 is written in C++.</p>
-<p>The files included in the src/ and include/ directories from root are as follows.</p>
-<p>src/</p>
-<p>Analysis.cc</p>
-<p>AnalysisManager.cc</p>
-<p>DADEphysicsList.cc</p>
-<p>DMXMaxTimeCuts.cc</p>
-<p>DMXMinEkineCuts.cc</p>
-<p>DMXPhysicsList.cc</p>
-<p>EventAction.cc</p>
-<p>EventActionMessenger.cc</p>
-<p>GammaNuclearPhysics.cc</p>
-<p>PhysicsList.cc</p>
-<p>PrimaryGeneratorAction.cc</p>
-<p>RunAction.cc</p>
-<p>StackingAction.cc</p>
-<p>SteppingAction.cc</p>
-<p>VisManager.cc</p>
-<p>src/</p>
-<p>Analysis.hh</p>
-<p>AnalysisManager.hh</p>
-<p>DADEphysicsList.hh</p>
-<p>DetectorConstruction.hh</p>
-<p>DMXMaxTimeCuts.hh</p>
-<p>DMXMinEkineCuts.hh</p>
-<p>DMXPhysicsList.hh</p>
-<p>DMXSpecialCuts.hh</p>
-<p>EventAction.hh</p>
-<p>EventActionMessenger.hh</p>
-<p>GammaNuclearPhysics.hh</p>
-<p>PhysicsList.hh</p>
-<p>PhysicsListLowEnergy.hh</p>
-<p>PrimaryGeneratorAction.hh</p>
-<p>RunAction.hh</p>
-<p>StackingAction.hh</p>
-<p>SteppingAction.hh</p>
-<p>VisManager.hh</p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="styleguide.html">4. Style Guide</a></li>
+</ul>
 </div>
+<p>Welcome to the Grasshopper Developer’s Guide!</p>
+<p>This guide documents how contributions are made to Grasshopper,
+what style rules exist for the code, how to run tests, and other related topics.</p>
+<p>In addition, the Dev Guide serves to brief Grasshopper users on the functionality of each file
+in the codebase of the Grasshopper program. For devs, the shorthand for Grasshopper
+can be GRSHPR, a recursive acronym for “Grasshopper Realistically Simulates High-Energy
+Particles &amp; Radiation”.</p>
 </div>
 
 
@@ -230,10 +199,10 @@ to make in order to avoid the bug.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../pythonapi/index.html" class="btn btn-neutral float-right" title="Python API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="bugs.html" class="btn btn-neutral float-right" title="1. Bugs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../usersguide/index.html" class="btn btn-neutral float-left" title="Users Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../usersguide/index.html" class="btn btn-neutral float-left" title="User’s Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

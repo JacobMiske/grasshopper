@@ -56,25 +56,17 @@ class pstar_api():
         """
         # Open Chrome window
         driver = webdriver.Chrome()
-        driver.get('https://physics.nist.gov/PhysRefData/pstar/html/pstar1.html')
+        driver.get('https://physics.nist.gov/PhysRefData/Star/Text/PSTAR.html')
+        # Click graph electronic stopping power button
+        elect_sp_button = driver.find_elements_by_xpath("/html/body/form/div/table/tbody/tr[2]/td[1]/table/tbody/tr[1]/td/input[3]")[0]
+        elect_sp_button.click()
+        # nuclear stopping power button
+        nuc_sp_button = driver.find_elements_by_xpath("/html/body/form/div/table/tbody/tr[2]/td[1]/table/tbody/tr[1]/td/input[4]")[0]
+        nuc_sp_button.click()
         # Click submit button
-        submit_button = driver.find_elements_by_xpath("//input[@value='Submit Information']")[0]
+        submit_button = driver.find_elements_by_xpath("/html/body/form/div/table/tbody/tr[3]/td/input[1]")[0]
         submit_button.click()
-        # Type atomic number
-        text_area = driver.find_elements_by_xpath("/html/body/form/p[2]/table/tbody/tr[1]/td[1]/p/input[1]")[0]
-        text_area.send_keys(str(ATOMIC_NUMBER))
-        # Click submit button
-        submit_button = driver.find_elements_by_xpath("//input[@value='Submit Information']")[0]
-        submit_button.click()
-        # Remove graph
-        # submit_button = driver.find_elements_by_xpath("/html/body/form/p[2]/table/tbody/tr[2]/td[1]/p[1]/input")[0]
-        # submit_button.click()
-        # Click tab deliminator submit button
-        submit_button = driver.find_elements_by_xpath("//input[@value='tab']")[0]
-        submit_button.click()
-        # Click download submit button
-        submit_button = driver.find_elements_by_xpath("/html/body/form[2]/p/input[5]")[0]
-        submit_button.click()
+        #
         # Print out html
         if print_out:
             html = driver.page_source
