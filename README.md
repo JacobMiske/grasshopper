@@ -7,6 +7,7 @@ defined in a Geometry Description Markup Language (GDML) file, with the purpose 
 simple simulations.  The goal is to allow users with no C++ and Geant4 knowledge quickly set up and run simulations.
 
 Author:  		Areg Danagoulian
+Thesis Information: Jacob Miske
 
 Creation time:  11/2015  
 Last update:    Continuous Development since 11/2015
