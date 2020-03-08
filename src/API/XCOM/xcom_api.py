@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 import time
-from itertools import repeat
 import csv
+from itertools import repeat
 from builtins import str
 from selenium import webdriver
 from api_visualize.api_visualize import api_visualize
 
-ATOMIC_NUMBER = 2
+ATOMIC_NUMBER = 26
 
 
 class xcom_api():
@@ -98,7 +98,7 @@ class xcom_api():
                     csvout.writerows(repeat(row[2:4], count))
         return 0
 
-    def get_xcom_html(self, options, options_bool=False, print_out=True):
+    def get_xcom_html(self, options, options_bool=False, save_html=True):
         """
         Use selenium's webdriver to search the XCOM website
         and query the database.
@@ -137,13 +137,12 @@ class xcom_api():
         submit_button = self.driver.find_elements_by_xpath("/html/body/form[2]/p/input[5]")[0]
         submit_button.click()
         # Print out html
-        if print_out:
+        if save_html:
             html = self.driver.page_source
-            print(html)
         # Wait then close
         time.sleep(3)
         self.driver.quit()
-        return html if print_out else 0
+        return html if save_html else 0
 
     def get_xcom_data(self, xcom_html_data, save_file=True):
         """
@@ -151,11 +150,37 @@ class xcom_api():
         Can pass to save_data_to_csv() method for save file.
         :return:
         """
-        data_fog = xcom_html_data[107:-21]
-        res = data_fog.split('\n')
-        print(res)
+        res = xcom_html_data.split('\t')
+        # res = line_res.split('\t')
+        result = [float(i.strip()) for i in res[16:-1]]
+        print(result)
+        xcom_data = result
         return xcom_data
 
+    def save_data_to_csv(self, xcom_html_data):
+        """
+        Saving method for getting an CSV out
+        :param xcom_html_data:
+        :return: 
+        """
+        res = xcom_html_data.split("\t")
+        xcom_data = [i.strip() for i in res[16:-1]]
+        # Get the filename to create
+        filename = "../Results/Data/xcom_api_result_{}.csv".format(time.time())
+        with open(filename, "w") as filename:
+            wr = csv.writer(filename, quoting=csv.QUOTE_ALL)
+            wr.writerow(xcom_data)
+        return 0
+
+    def get_xcom_api_plots(self, xcom_data):
+        """
+
+        :param xcom_data:
+        :return:
+        """
+        xcom_api_visualizer = api_visualize()
+        xcom_api_visualizer.plot_data(list_v=xcom_data)
+        #get_metrics = xcom_api_visualizer.get_metrics_on_list(list_v=xcom_data)
 
 
 if __name__ == '__main__':
@@ -163,9 +188,7 @@ if __name__ == '__main__':
     # Get options on request
     options_user = xcom_operator.get_user_options()
     # Run the data scraper
-    html = xcom_operator.get_xcom_html(options=options_user, print_out=True)
-    data = xcom_operator.get_xcom_data(save_file=True)
-    # Trying out visualizations
-    # xcom_api_visualizer = api_visualize()
-    # gen_figures = xcom_api_visualizer.plot_list(list_v=res)
-    # get_metrics = xcom_api_visualizer.get_metrics_on_list(list_v=res)
+    html = xcom_operator.get_xcom_html(options=options_user, save_html=True)
+    data = xcom_operator.get_xcom_data(save_file=True, xcom_html_data=html)
+    # xcom_operator.save_data_to_csv(xcom_html_data=html)
+    xcom_operator.get_xcom_api_plots(xcom_data=data)
