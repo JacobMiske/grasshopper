@@ -5,7 +5,7 @@
 // MIT, NSE
 // Input:
 //    gdml file
-//    the root output filename.  If text output requested in gdml input, a .dat ASCII file will be produced instead
+//    the root output filename.  If text output requested in GDML input, a .dat ASCII file will be produced instead
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -78,12 +78,11 @@ int main(int argc,char** argv)
 {
   bool commandlineseed = false;
 	G4int seed;
-
 	clock_t t0,t1,t2;
 	G4int start_time = time(NULL);
 	t0=clock();
 	G4int UI_flag;
-	// check that the number of input parameters is consistent with expected
+	// Check that the number of input parameters is consistent with expected
 	if(argc==4 || argc==3 || argc==5){  // output configurations information
 		parser.Read(argv[1]);
 		RootOutputFile = argv[2];
@@ -97,6 +96,7 @@ int main(int argc,char** argv)
       commandlineseed = true;
     }
 	} else if(argc==1) {
+	    // If no given configuration file, runs with the default GDML file present.
 		std::cout<<"\n grasshopper <gdml_configuration_file> <root_output_filename> <User Interface y/n flag> \n\n";
 		parser.Read("default.gdml");
 		UI_flag=0;
@@ -109,7 +109,7 @@ int main(int argc,char** argv)
   if (!commandlineseed)
   	seed = parser.GetConstant("RandomGenSeed");
 	run_evnt = parser.GetConstant("EventsToRun");
-	// output configuration information
+	// Output configuration information
 	std::cout<<"\nRandomGenSeed: "<<seed;
 	std::cout<<"\nEventsToRun: "<<run_evnt;
 	// choose the Random engine
@@ -117,25 +117,17 @@ int main(int argc,char** argv)
 	CLHEP::HepRandom::setTheSeed(seed);
 	// Construct the default run manager
 	G4RunManager* runManager = new G4RunManager;
-	// start filling ntuple
+	// Start filling ntuple
 	Analysis *analysis = new Analysis();
-	// exporting geometry from specified GDML file
+	// Exporting geometry from specified GDML file
 	runManager->SetUserInitialization(new DetectorConstruction(parser.GetWorldVolume()));
 	runManager->SetUserInitialization(new physicsList(true,false)); //<- DADE's version, not very different from DMX (used to be (false,false))
 	//	runManager->SetUserInitialization(new DMXPhysicsList);
 	G4UIsession* session=0;
-	// G4UIterminal is a (dumb) terminal.
-//#ifdef G4UI_USE_XM
-//	session = new G4UIXm(argc,argv);
-//#else           
-//#ifdef G4UI_USE_TCSH
-//	session = new G4UIterminal(new G4UItcsh);
-//#else
-//	session = new G4UIterminal();
-//#endif
-//#endif
+	// G4UIterminal is a unhelpful terminal.
+
 #ifdef G4VIS_USE
-	// visualization manager
+	// Visualization manager
 	G4VisManager* visManager = new VisManager;
 	visManager->Initialize();
 	G4TrajectoryDrawByParticleID* model = new G4TrajectoryDrawByParticleID;
@@ -147,7 +139,7 @@ int main(int argc,char** argv)
 	visManager->RegisterModel(model);
 	visManager->SelectTrajectoryModel(model->Name());
 #endif
-	// set mandatory user action class
+	// Set mandatory user action class
 	runManager->SetUserAction(new PrimaryGeneratorAction);
 	runManager->SetUserAction(new RunAction);
 	runManager->SetUserAction(new EventAction);
@@ -155,15 +147,6 @@ int main(int argc,char** argv)
 	runManager->SetUserAction(new StackingAction);
 	// Initialize G4 kernel
 	runManager->Initialize();
-
-	/*
-  if(run_evnt==-1)
-    {
-      runManager->BeamOn(1);
-    }
-  else
-    runManager->BeamOn(run_evnt);
-	 */
 	// run timer
 	G4int beam_on_start_time = time(NULL);
 	t1=clock();
