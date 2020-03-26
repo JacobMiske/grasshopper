@@ -25,6 +25,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -88,6 +89,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#example-alpha-particle-energy-loss">Example Alpha Particle Energy Loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-beta-particles-in-water-transmission">Example Beta Particles in Water Transmission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#example-hand-calculations-for-20-situations">Example Hand Calculations for 20 Situations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#equations-used">Equations used</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../releasenotes/index.html">Release Notes</a></li>
@@ -178,6 +183,306 @@ the detector volume made of G4_Si.</p>
 <p>The world volume consists of Air at 1e-4 atm of pressure. The first red disk is G4_WATER and the second red disk is
 the detector volume made of G4_Si.</p>
 <a class="reference internal image-reference" href="../_images/GRSHPRbeta_water.png"><img alt="../_images/GRSHPRbeta_water.png" src="../_images/GRSHPRbeta_water.png" style="width: 600px;" /></a>
+</div>
+</div>
+<div class="section" id="example-hand-calculations-for-20-situations">
+<h1>Example Hand Calculations for 20 Situations<a class="headerlink" href="#example-hand-calculations-for-20-situations" title="Permalink to this headline">¶</a></h1>
+<p>5 particles, 2 shields, 2 energies</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 35%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Particle</p></th>
+<th class="head"><p>Shield</p></th>
+<th class="head"><p>Energy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>01</p></td>
+<td><p>Proton</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>02</p></td>
+<td><p>Proton</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>03</p></td>
+<td><p>Proton</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>04</p></td>
+<td><p>Proton</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>05</p></td>
+<td><p>Neutron</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>06</p></td>
+<td><p>Neutron</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>07</p></td>
+<td><p>Neutron</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>08</p></td>
+<td><p>Neutron</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>09</p></td>
+<td><p>Electron</p></td>
+<td><p>0.5 Air 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Electron</p></td>
+<td><p>0.5 Air 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Electron</p></td>
+<td><p>1.0 Air 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Electron</p></td>
+<td><p>1.0 Air 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Alpha</p></td>
+<td><p>0.5 Air 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>Alpha</p></td>
+<td><p>0.5 Air 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Alpha</p></td>
+<td><p>1.0 Air 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>Alpha</p></td>
+<td><p>1.0 Air 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>Gamma</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>Gamma</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>Gamma</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>1 MeV</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>Gamma</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>10 MeV</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="equations-used">
+<h2>Equations used<a class="headerlink" href="#equations-used" title="Permalink to this headline">¶</a></h2>
+<p>Transmission (Differential Cross Section):</p>
+<p><span class="math notranslate nohighlight">\(I = I_0 e^{-\Sigma(E) x}\)</span></p>
+<p>Energy Loss (Bethe Block Formula)</p>
+<p><span class="math notranslate nohighlight">\(- &lt;\dfrac{dE}{dx}&gt; = \dfrac{4 \pi}{m_e c^2} \dfrac{n z^2}{\beta^2} (\dfrac{e^2}{4 \pi \epsilon_0})^2 [ln(\dfrac{2 m_e c^2 \beta^2}{I(1 - \beta^2)}) - \beta^2]\)</span></p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>c: speed of light</p></li>
+<li><p><span class="math notranslate nohighlight">\(\epsilon_0\)</span>: Vacuum permittivity</p></li>
+<li><p>beta: the ratio of v to c</p></li>
+<li><p>e: electron charge</p></li>
+<li><p>m_e: electron mass</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 22%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Particle</p></th>
+<th class="head"><p>Shield*</p></th>
+<th class="head"><p>Energy</p></th>
+<th class="head"><p>Stopping Power</p></th>
+<th class="head"><p>Transmission</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>01</p></td>
+<td><p>Proton</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>02</p></td>
+<td><p>Proton</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>03</p></td>
+<td><p>Proton</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>04</p></td>
+<td><p>Proton</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>05</p></td>
+<td><p>Neutron</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>06</p></td>
+<td><p>Neutron</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>07</p></td>
+<td><p>Neutron</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>08</p></td>
+<td><p>Neutron</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>09</p></td>
+<td><p>Electron</p></td>
+<td><p>0.5 Air 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Electron</p></td>
+<td><p>0.5 Air 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Electron</p></td>
+<td><p>1.0 Air 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Electron</p></td>
+<td><p>1.0 Air 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Alpha</p></td>
+<td><p>0.5 Air 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>Alpha</p></td>
+<td><p>0.5 Air 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Alpha</p></td>
+<td><p>1.0 Air 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>Alpha</p></td>
+<td><p>1.0 Air 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>Gamma</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>Gamma</p></td>
+<td><p>Water 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>Gamma</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>1 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>Gamma</p></td>
+<td><p>G4_Fe 1cm</p></td>
+<td><p>10 MeV</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>water is liquid state</p></li>
+</ul>
 </div>
 </div>
 

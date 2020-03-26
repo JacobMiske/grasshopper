@@ -7,10 +7,10 @@ import json
 import getpass
 import datetime
 # Grasshopper specific functions
-from grasshopper_funcs.ListTools import ListTools
-from grasshopper_funcs.StatusFunction import StatusFunction
-from grasshopper_funcs.RunSim import RunSim
-from grasshopper_funcs.OutputProcessor import OutputProcessor
+from cli_funcs.ListTools import ListTools
+from cli_funcs.StatusFunction import StatusFunction
+from cli_funcs.RunSim import RunSim
+from cli_funcs.OutputProcessor import OutputProcessor
 # Utilities
 import urllib3
 
@@ -23,9 +23,9 @@ class Grasshopper(cmd.Cmd):
     """
     A simple cmd application using cmd. For the STW grasshopper project.
     """
-    custom_fig = Figlet(font='slant')
-    intro = 'Welcome to the Grasshopper shell.   Type help or ? to list commands.\n'
-    prompt = '> '
+    custom_fig = Figlet(font="slant")
+    intro = "Welcome to the Grasshopper shell.   Type help or ? to list commands.\n"
+    prompt = "> "
     file = None
     print(custom_fig.renderText('  Grasshopper'))
 
@@ -39,8 +39,8 @@ class Grasshopper(cmd.Cmd):
 
             Returns a table of all onboarded sensors for a grasshopper unit.
             """
-            custom_fig = Figlet(font='slant')
-            print(custom_fig.renderText(' Grasshopper sims '))
+            custom_fig = Figlet(font="slant")
+            print(custom_fig.renderText(" Grasshopper sims "))
         list_sensors()
         list_sensor = ListTools()
         table = list_sensor.sensor_table()
@@ -72,8 +72,14 @@ class Grasshopper(cmd.Cmd):
             # TODO: abstract into another func and class like ls and status
             custom_fig = Figlet(font='slant')
             print(custom_fig.renderText('grasshopper run'))
-        run_sim()
-        run_sim.get_sim()
+        sim_runtime = RunSim()
+        user_choice = input("Run JSON sims (1), run GDML sims (2) ")
+        if user_choice == "1":
+            print("JSON Sims")
+            sim_runtime.run_json_sims()
+        if user_choice == "2":
+            print("GDML Sims")
+            sim_runtime.run_GDML_sims()
 
     def do_time(self, arg):
         """

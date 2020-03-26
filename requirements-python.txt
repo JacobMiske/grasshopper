@@ -1,3 +1,8 @@
 numpy
 matplotlib
 selenium
+sphinx
+sphinx_rtd_theme
+recommonmark
+pyfiglet
+terminaltables

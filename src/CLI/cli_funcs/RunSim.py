@@ -1,5 +1,8 @@
 #!/venv/bin/python3.7
 import os
+from os import listdir
+from os.path import isfile, join
+import subprocess
 from pyfiglet import Figlet
 from terminaltables import SingleTable, ascii_table, AsciiTable
 import json
@@ -63,3 +66,26 @@ class RunSim:
         """
         pass
 
+    def run_GDML_sims(self):
+        """
+        Runs all GDML files under simulation_GDML/
+        :return:
+        """
+        GDML_file_path = "./sim_generation/simulation_GDML/"
+        GDML_files = [f for f in listdir(GDML_file_path) if isfile(join(GDML_file_path, f))]
+        print(GDML_files)
+        print(type(GDML_files[1]))
+        subprocess(["grasshopper"])
+        # for GDML_file in GDML_files:
+        #     subprocess(["grasshopper", str(GDML_file), str(GDML_file)+"data"])
+        return 0
+
+    def run_json_sims(self):
+        """
+        Runs all JSON files under simulation_json/
+        :return:
+        """
+        JSON_file_path = "./sim_generation/simulation_json/"
+        json_files = [f for f in listdir(JSON_file_path) if isfile(join(JSON_file_path, f))]
+        print(json_files)
+        return 0

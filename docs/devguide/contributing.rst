@@ -10,7 +10,7 @@ The purpose of this section is to document how the project is managed: how
 contributions (bug fixes, enhancements, new features) are made, how they are
 evaluated, who is permitted to merge pull requests, and what happens in the
 event of disagreements. Once you have read through this section, the
-:ref:`devguide_workflow` section outlines the actual mechanics of making a
+workflow section outlines the actual mechanics of making a
 contribution (forking, submitting a pull request, etc.).
 
 The goal of our governance model is to:
@@ -26,8 +26,15 @@ Overview
 
 Grasshopper uses a liberal contribution model for project governance. Anyone involved
 in development in a non-trivial capacity is given an opportunity to influence
-the direction of the project. Project decisions are made through a
-consensus-seeking process rather than by voting.
+the direction of the project. Students working with the project head Areg have supplied code.
+Project decisions are made through a consensus-seeking process rather than by voting.
+
+Docs
+----
+Documentation is managed through ReadTheDocs. This platform allows us to use the Sphinx documentation engine. While
+the Sphinx library is designed for use with Python projects, ReadTheDocs has extensions for many sorts of code bases.
+
+The RTD getting started page (Link)[https://docs.readthedocs.io/en/stable/index.html].
 
 Terminology
 -----------
