@@ -56,9 +56,9 @@
     <quantity name="BeamOffsetZ"  type="coordinate" value="-10" unit="mm"/> <!-- all in mm -->
     <quantity name="BeamSize" type="coordinate" value="1" unit="mm"/> <!-- isotropic -->
 
-    <quantity name="BeamEnergy" type="energy" value="10" unit="MeV"/> <!-- this is in MeV --> <!-- a negative number prompts reading input_spectrum.txt -->
-    <constant name="EventsToRun" value="10000"/>
-    <constant name="ParticleNumber" value="11"/>
+    <quantity name="BeamEnergy" type="energy" value="1000" unit="MeV"/> <!-- this is in MeV --> <!-- a negative number prompts reading input_spectrum.txt -->
+    <constant name="EventsToRun" value="1000000"/>
+    <constant name="ParticleNumber" value="2212"/>
     <!-- e- is 11, gamma is 22, neutron is 2112, proton is 2212, alpha is 1000020040 -->
 
   </define>
@@ -86,7 +86,7 @@
     </volume>
     <!-- the horizontal detection plane -->
     <volume name="det_plane_log">
-      <materialref ref="G4_Pb"/> <!-- one of Air, G4_Cu, G4_WATER, or G4_Pb -->
+      <materialref ref="G4_WATER"/> <!-- one of Air, G4_Cu, G4_WATER, or G4_Pb -->
       <solidref ref="det_plane_solid"/>
     </volume>
 

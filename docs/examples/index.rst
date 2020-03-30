@@ -86,20 +86,20 @@ ID  Particle         Shield*        Energy         Stopping Power Transmission
 ==  ================ ============== ============== ============== ==============
 01  Proton           Water 1cm      100 MeV        7.289e0 cm2/g  6.8e-4
 02  Proton           Water 1cm      1 GeV          2.211e0 cm2/g  1.1e-1
-03  Proton           G4_Fe 1cm      100 MeV
-04  Proton           G4_Fe 1cm      1 GeV
+03  Proton           G4_Fe 1cm      100 MeV        0.05043 cm2/g  6.7e-1
+04  Proton           G4_Fe 1cm      1 GeV          0.00157 cm2/g  9.88e-1
 05  Neutron          Water 1cm      1 MeV
 06  Neutron          Water 1cm      10 MeV
 07  Neutron          G4_Fe 1cm      1 MeV
 08  Neutron          G4_Fe 1cm      10 MeV
-09  Electron         0.5 Air 1cm    1 MeV
-10  Electron         0.5 Air 1cm    10 MeV
-11  Electron         1.0 Air 1cm    1 MeV
-12  Electron         1.0 Air 1cm    10 MeV
-13  Alpha            0.5 Air 1cm    1 MeV
-14  Alpha            0.5 Air 1cm    10 MeV
-15  Alpha            1.0 Air 1cm    1 MeV
-16  Alpha            1.0 Air 1cm    10 MeV
+09  Electron         0.5 Air 1cm    100 MeV        2.41e0 cm2/g   9.97e-1
+10  Electron         0.5 Air 1cm    1 GeV          1.46e1 cm2/g   9.82e-1
+11  Electron         1.0 Air 1cm    100 MeV        4.82e0 cm2/g   9.94e-1
+12  Electron         1.0 Air 1cm    1 GeV          2.91e1 cm2/g   9.65e-1
+13  Alpha            0.5 Air 1cm    1 MeV          9.62e2 cm2/g   3.08e-1
+14  Alpha            0.5 Air 1cm    10 MeV         2.32e2 cm2/g   7.53e-1
+15  Alpha            1.0 Air 1cm    1 MeV          1.92e3 cm2/g   9.47e-2
+16  Alpha            1.0 Air 1cm    10 MeV         4.64e2 cm2/g   5.67e-1
 17  Gamma            Water 1cm      1 MeV
 18  Gamma            Water 1cm      10 MeV
 19  Gamma            G4_Fe 1cm      1 MeV
