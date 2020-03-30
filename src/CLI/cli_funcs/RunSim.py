@@ -74,10 +74,8 @@ class RunSim:
         GDML_file_path = "./sim_generation/simulation_GDML/"
         GDML_files = [f for f in listdir(GDML_file_path) if isfile(join(GDML_file_path, f))]
         print(GDML_files)
-        print(type(GDML_files[1]))
-        subprocess(["grasshopper"])
-        # for GDML_file in GDML_files:
-        #     subprocess(["grasshopper", str(GDML_file), str(GDML_file)+"data"])
+        for GDML_file in GDML_files:
+            subprocess.call(["grasshopper", GDML_file_path + str(GDML_file), GDML_file_path + str(GDML_file)+"data"])
         return 0
 
     def run_json_sims(self):

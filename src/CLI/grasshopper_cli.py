@@ -4,6 +4,7 @@ import os
 import cmd
 import sys
 import json
+import subprocess
 import getpass
 import datetime
 # Grasshopper specific functions
@@ -19,7 +20,7 @@ from pyfiglet import Figlet             # For printing ascii art
 from terminaltables import SingleTable  # For creating tables
 
 
-class Grasshopper(cmd.Cmd):
+class Grasshopper_CLI(cmd.Cmd):
     """
     A simple cmd application using cmd. For the STW grasshopper project.
     """
@@ -123,5 +124,5 @@ class Grasshopper(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    c = Grasshopper()
+    c = Grasshopper_CLI()
     sys.exit(c.cmdloop())

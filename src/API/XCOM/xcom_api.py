@@ -1,28 +1,35 @@
-#!/usr/bin/python3
+"""
+src for pulling down XCOM data from NIST.
+MIT License
+"""
+#!./env/bin/python
 import time
 import csv
+import json
 from itertools import repeat
 from builtins import str
 from selenium import webdriver
 from api_visualize.api_visualize import api_visualize
 
-ATOMIC_NUMBER = 26
+# Load the config
+with open("config.json") as file:
+    ATOMIC_NUMBER = json.load(file).get("xcom_request").get("Attributes").get("AtomicNumber")
 
 
 class xcom_api():
     """
     Controls the NIST XCOM database website.
 
-    This API handles automated use of the following website.
+    This src handles automated use of the following website.
     https://physics.nist.gov/PhysRefData/Xcom/html/xcom1.html
     """
     def __init__(self, options=None, service_args=None,
                  desired_capabilities=None, service_log_path=None,
                  chrome_options=None, keep_alive=True):
         """
-        Creates a new instance of the NIST XCOM API.
+        Creates a new instance of the NIST XCOM src.
 
-        Starts the service and then creates new instance of NIST XCOM API.
+        Starts the service and then creates new instance of NIST XCOM src.
 
         :Args:
          - executable_path - path to the executable. If the default is used it assumes the executable is in the $PATH
@@ -33,7 +40,9 @@ class xcom_api():
            capabilities only, such as "proxy" or "loggingPref".
          - service_log_path - Where to log information from the driver.
          - chrome_options - Deprecated argument for options
-         - keep_alive - Whether to configure NIST API to use HTTP keep-alive.
+         - keep_alive - Whether to configure NIST src to use HTTP keep-alive.
+         - driver - the webdriver chosen
+         - driver.get - the website to start at
         """
         self.options = options
         self.service_args = service_args
@@ -184,6 +193,7 @@ class xcom_api():
 
 
 if __name__ == '__main__':
+    # Use the module
     xcom_operator = xcom_api()
     # Get options on request
     options_user = xcom_operator.get_user_options()

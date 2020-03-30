@@ -86,10 +86,10 @@ Parameters:
 ==  ================ ============== ============== ============== ==============
 ID  Particle         Shield*        Energy         Stopping Power Transmission
 ==  ================ ============== ============== ============== ==============
-01  Proton           Water 1cm      1 MeV
-02  Proton           Water 1cm      10 MeV
-03  Proton           G4_Fe 1cm      1 MeV
-04  Proton           G4_Fe 1cm      10 MeV
+01  Proton           Water 1cm      100 MeV        7.289e0 cm2/g  6.8e-4
+02  Proton           Water 1cm      1 GeV          2.211e0 cm2/g  1.1e-1
+03  Proton           G4_Fe 1cm      100 MeV
+04  Proton           G4_Fe 1cm      1 GeV
 05  Neutron          Water 1cm      1 MeV
 06  Neutron          Water 1cm      10 MeV
 07  Neutron          G4_Fe 1cm      1 MeV

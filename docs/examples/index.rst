@@ -67,9 +67,7 @@ Transmission (Differential Cross Section):
 
 :math:`I = I_0 e^{-\Sigma(E) x}`
 
-Energy Loss (Bethe Block Formula)
-
-:math:`- <\dfrac{dE}{dx}> = \dfrac{4 \pi}{m_e c^2} \dfrac{n z^2}{\beta^2} (\dfrac{e^2}{4 \pi \epsilon_0})^2 [ln(\dfrac{2 m_e c^2 \beta^2}{I(1 - \beta^2)}) - \beta^2]`
+Use tables,
 
 Parameters:
 
@@ -109,3 +107,9 @@ ID  Particle         Shield*        Energy         Stopping Power Transmission
 ==  ================ ============== ============== ============== ==============
 
 * water is liquid state
+
+Additionally the following formula could be used but is unnecessary for these high level estimates.
+
+Energy Loss (Bethe Block Formula)
+
+:math:`- <\dfrac{dE}{dx}> = \dfrac{4 \pi}{m_e c^2} \dfrac{n z^2}{\beta^2} (\dfrac{e^2}{4 \pi \epsilon_0})^2 [ln(\dfrac{2 m_e c^2 \beta^2}{I(1 - \beta^2)}) - \beta^2]`

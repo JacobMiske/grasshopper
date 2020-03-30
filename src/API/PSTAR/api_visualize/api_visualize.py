@@ -1,5 +1,5 @@
 """
-API result visualization tools
+src result visualization tools
 """
 import time
 import numpy as np
@@ -13,7 +13,7 @@ class api_visualize(object):
     Able to generate plots and mathematical relations.
     """
     def __init__(self):
-        self.desc = "API visualization tools"
+        self.desc = "src visualization tools"
 
     def plot_data(self, list_v, options=[], x_s=None, y_s=None, z_s=None):
         """
