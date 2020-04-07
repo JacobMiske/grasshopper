@@ -31,7 +31,7 @@ the detector volume made of G4_Si.
 
 
 Example Hand Calculations for 20 Situations
-===========================================
+-------------------------------------------
 
 5 particles, 2 shields, 2 energies
 

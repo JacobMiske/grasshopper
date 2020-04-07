@@ -56,7 +56,7 @@
     <quantity name="BeamOffsetZ"  type="coordinate" value="-10" unit="mm"/> <!-- all in mm -->
     <quantity name="BeamSize" type="coordinate" value="1" unit="mm"/> <!-- isotropic -->
 
-    <quantity name="BeamEnergy" type="energy" value="10" unit="MeV"/> <!-- this is in MeV --> <!-- a negative number prompts reading input_spectrum.txt -->
+    <quantity name="BeamEnergy" type="energy" value="100" unit="MeV"/> <!-- this is in MeV --> <!-- a negative number prompts reading input_spectrum.txt -->
     <constant name="EventsToRun" value="1000000"/>
     <constant name="ParticleNumber" value="1000020040"/>
     <!-- e- is 11, gamma is 22, neutron is 2112, proton is 2212, alpha is 1000020040 -->
@@ -73,7 +73,7 @@
     -->
     <!-- the horizontal detection plane -->
     <tube name = "det_plane_solid" rmin="0" rmax="5" z="1" deltaphi="6.28318" startphi="0" aunit="rad" lunit= "mm"/>
-    <tube name = "plate_solid" rmin="0" rmax="5" z="1" deltaphi="6.28318" startphi="0" aunit="rad" lunit= "mm"/>
+    <tube name = "plate_solid" rmin="0" rmax="5" z="10" deltaphi="6.28318" startphi="0" aunit="rad" lunit= "mm"/>
   </solids>
 
 
@@ -81,12 +81,12 @@
   <structure>
     <!-- the horizontal plate -->
     <volume name="plate_log">
-      <materialref ref="G4_Al"/>
+      <materialref ref="Air"/>
       <solidref ref="plate_solid"/>
     </volume>
     <!-- the horizontal detection plane -->
     <volume name="det_plane_log">
-      <materialref ref="Air"/> <!-- one of Air, G4_Cu, G4_WATER, or G4_Pb -->
+      <materialref ref="G4_Si"/> <!-- one of Air, G4_Cu, G4_WATER, or G4_Pb -->
       <solidref ref="det_plane_solid"/>
     </volume>
 

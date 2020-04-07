@@ -12,7 +12,7 @@ from post_process_funcs.OutputProcessor import OutputProcessor
 
 file_path = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = path.abspath(path.join(file_path, "../.."))
-GRASSHOPPER_PATH = "/exec/miskethesis/"
+GRASSHOPPER_DATA_PATH = "/src/post_process/"
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
     print(ROOT_DIR)
     # Get all data file paths below root directory of grasshopper and pass to the OutputProcessor
     file_paths_data = []
-    for path, subdirs, files in os.walk(ROOT_DIR + GRASSHOPPER_PATH):
+    for path, subdirs, files in os.walk(ROOT_DIR + GRASSHOPPER_DATA_PATH):
         for filename in files:
             f = os.path.join(path, filename)
             full_path = str(f)

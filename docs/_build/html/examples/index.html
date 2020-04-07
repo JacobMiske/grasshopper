@@ -89,9 +89,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#example-alpha-particle-energy-loss">Example Alpha Particle Energy Loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-beta-particles-in-water-transmission">Example Beta Particles in Water Transmission</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#example-hand-calculations-for-20-situations">Example Hand Calculations for 20 Situations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-hand-calculations-for-20-situations">Example Hand Calculations for 20 Situations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#equations-used">Equations used</a></li>
 </ul>
 </li>
@@ -184,9 +182,8 @@ the detector volume made of G4_Si.</p>
 the detector volume made of G4_Si.</p>
 <a class="reference internal image-reference" href="../_images/GRSHPRbeta_water.png"><img alt="../_images/GRSHPRbeta_water.png" src="../_images/GRSHPRbeta_water.png" style="width: 600px;" /></a>
 </div>
-</div>
 <div class="section" id="example-hand-calculations-for-20-situations">
-<h1>Example Hand Calculations for 20 Situations<a class="headerlink" href="#example-hand-calculations-for-20-situations" title="Permalink to this headline">¶</a></h1>
+<h2>Example Hand Calculations for 20 Situations<a class="headerlink" href="#example-hand-calculations-for-20-situations" title="Permalink to this headline">¶</a></h2>
 <p>5 particles, 2 shields, 2 energies</p>
 <table class="docutils align-default">
 <colgroup>
@@ -305,12 +302,12 @@ the detector volume made of G4_Si.</p>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="section" id="equations-used">
 <h2>Equations used<a class="headerlink" href="#equations-used" title="Permalink to this headline">¶</a></h2>
 <p>Transmission (Differential Cross Section):</p>
 <p><span class="math notranslate nohighlight">\(I = I_0 e^{-\Sigma(E) x}\)</span></p>
-<p>Energy Loss (Bethe Block Formula)</p>
-<p><span class="math notranslate nohighlight">\(- &lt;\dfrac{dE}{dx}&gt; = \dfrac{4 \pi}{m_e c^2} \dfrac{n z^2}{\beta^2} (\dfrac{e^2}{4 \pi \epsilon_0})^2 [ln(\dfrac{2 m_e c^2 \beta^2}{I(1 - \beta^2)}) - \beta^2]\)</span></p>
+<p>Use tables,</p>
 <p>Parameters:</p>
 <ul class="simple">
 <li><p>c: speed of light</p></li>
@@ -356,15 +353,15 @@ the detector volume made of G4_Si.</p>
 <td><p>Proton</p></td>
 <td><p>G4_Fe 1cm</p></td>
 <td><p>100 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>0.05043 cm2/g</p></td>
+<td><p>6.7e-1</p></td>
 </tr>
 <tr class="row-odd"><td><p>04</p></td>
 <td><p>Proton</p></td>
 <td><p>G4_Fe 1cm</p></td>
 <td><p>1 GeV</p></td>
-<td></td>
-<td></td>
+<td><p>0.00157 cm2/g</p></td>
+<td><p>9.88e-1</p></td>
 </tr>
 <tr class="row-even"><td><p>05</p></td>
 <td><p>Neutron</p></td>
@@ -397,58 +394,58 @@ the detector volume made of G4_Si.</p>
 <tr class="row-even"><td><p>09</p></td>
 <td><p>Electron</p></td>
 <td><p>0.5 Air 1cm</p></td>
-<td><p>1 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>100 MeV</p></td>
+<td><p>2.41e0 cm2/g</p></td>
+<td><p>9.97e-1</p></td>
 </tr>
 <tr class="row-odd"><td><p>10</p></td>
 <td><p>Electron</p></td>
 <td><p>0.5 Air 1cm</p></td>
-<td><p>10 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>1 GeV</p></td>
+<td><p>1.46e1 cm2/g</p></td>
+<td><p>9.82e-1</p></td>
 </tr>
 <tr class="row-even"><td><p>11</p></td>
 <td><p>Electron</p></td>
 <td><p>1.0 Air 1cm</p></td>
-<td><p>1 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>100 MeV</p></td>
+<td><p>4.82e0 cm2/g</p></td>
+<td><p>9.94e-1</p></td>
 </tr>
 <tr class="row-odd"><td><p>12</p></td>
 <td><p>Electron</p></td>
 <td><p>1.0 Air 1cm</p></td>
-<td><p>10 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>1 GeV</p></td>
+<td><p>2.91e1 cm2/g</p></td>
+<td><p>9.65e-1</p></td>
 </tr>
 <tr class="row-even"><td><p>13</p></td>
 <td><p>Alpha</p></td>
 <td><p>0.5 Air 1cm</p></td>
 <td><p>1 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>9.62e2 cm2/g</p></td>
+<td><p>3.08e-1</p></td>
 </tr>
 <tr class="row-odd"><td><p>14</p></td>
 <td><p>Alpha</p></td>
 <td><p>0.5 Air 1cm</p></td>
 <td><p>10 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>2.32e2 cm2/g</p></td>
+<td><p>7.53e-1</p></td>
 </tr>
 <tr class="row-even"><td><p>15</p></td>
 <td><p>Alpha</p></td>
 <td><p>1.0 Air 1cm</p></td>
 <td><p>1 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>1.92e3 cm2/g</p></td>
+<td><p>9.47e-2</p></td>
 </tr>
 <tr class="row-odd"><td><p>16</p></td>
 <td><p>Alpha</p></td>
 <td><p>1.0 Air 1cm</p></td>
 <td><p>10 MeV</p></td>
-<td></td>
-<td></td>
+<td><p>4.64e2 cm2/g</p></td>
+<td><p>5.67e-1</p></td>
 </tr>
 <tr class="row-even"><td><p>17</p></td>
 <td><p>Gamma</p></td>
@@ -483,6 +480,9 @@ the detector volume made of G4_Si.</p>
 <ul class="simple">
 <li><p>water is liquid state</p></li>
 </ul>
+<p>Additionally the following formula could be used but is unnecessary for these high level estimates.</p>
+<p>Energy Loss (Bethe Block Formula)</p>
+<p><span class="math notranslate nohighlight">\(- &lt;\dfrac{dE}{dx}&gt; = \dfrac{4 \pi}{m_e c^2} \dfrac{n z^2}{\beta^2} (\dfrac{e^2}{4 \pi \epsilon_0})^2 [ln(\dfrac{2 m_e c^2 \beta^2}{I(1 - \beta^2)}) - \beta^2]\)</span></p>
 </div>
 </div>
 
